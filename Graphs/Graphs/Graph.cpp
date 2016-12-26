@@ -1,40 +1,41 @@
-#include "stdafx.h"
 #include "Graph.h"
 
 
-Graph::Graph(int n) {
+Graph::Graph(size_t n) {
 	size = n;
-	tab = new vector<int>[n + 1];
+	graph.resize(n);
 }
 
 void Graph::addEdge(int a, int b) {
 	isBoundsOk(a, b);
 
-	tab[a].push_back(b);
-	tab[b].push_back(a);
+	graph[a].push_back(b);
+	graph[b].push_back(a);
 }
 
-int Graph::getSize() {
+size_t Graph::getSize() {
 	return size;
 }
 
-vector<int> Graph::neighbours(int n) {
-	return tab[n];
+vector<int> Graph::neighbours(size_t n) {
+    isBoundsOk(n, n);
+	return graph[n];
 }
 
 void Graph::addDirectedEdge(int a, int b) {
 	isBoundsOk(a, b);
 
-	tab[a].push_back(b);
+	graph[a].push_back(b);
 }
 
 bool Graph::isDirectedEdge(int a, int b) {
 	isBoundsOk(a, b);
-	for (int i = 0; i < tab[a].size(); i++) {
-		if (tab[a][i] == b) {
+	for (size_t i = 0; i < graph[a].size(); i++) {
+		if (graph[a][i] == b) {
 			return true;
 		}
 	}
+    return false;
 }
 
 bool Graph::isEdge(int a, int b) {
@@ -43,7 +44,7 @@ bool Graph::isEdge(int a, int b) {
 }
 
 void Graph::isBoundsOk(int a, int b) {
-	if (!(0 < a && a <= size && 0 < b && b <= size)) {
+	if (!(0 <= a && a < size && 0 <= b && b < size)) {
 		throw 42;
 	}
 }

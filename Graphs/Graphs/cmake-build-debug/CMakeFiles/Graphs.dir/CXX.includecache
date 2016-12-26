@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/a/AllProjects/Informatics-Olympiad/Graphs/Graphs/Graph.cpp
+Graph.h
+/home/a/AllProjects/Informatics-Olympiad/Graphs/Graphs/Graph.h
+
+/home/a/AllProjects/Informatics-Olympiad/Graphs/Graphs/Graph.h
+vector
+-
+
+/home/a/AllProjects/Informatics-Olympiad/Graphs/Graphs/Graphs.cpp
+Graph.h
+/home/a/AllProjects/Informatics-Olympiad/Graphs/Graphs/Graph.h
+iostream
+-
+
