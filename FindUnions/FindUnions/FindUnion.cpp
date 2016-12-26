@@ -1,6 +1,5 @@
-#include "stdafx.h"
 #include "FindUnion.h"
-
+using namespace std;
 
 FindUnion::FindUnion(int n) {
 	if (n < 1) {
@@ -8,9 +7,9 @@ FindUnion::FindUnion(int n) {
 	}
 
 	size = n;
-	parent = new int[n + 1];
-	rank = new int[n + 1];
-	for (int i = 0; i <= size; i++) {
+	parent.resize(n + 1);
+	rank.resize(n + 1);
+	for (size_t i = 0; i < parent.size(); i++) {
 		parent[i] = i;
 		rank[i] = 0;
 	}
@@ -26,6 +25,7 @@ int FindUnion::Find(int x) {
 	}
 	else {
 		parent[x] = Find(parent[x]);
+        return parent[x];
 	}
 }
 
@@ -48,36 +48,23 @@ void FindUnion::Union(int x, int y) {
 	}
 }
 
-vector<vector<int>*>* FindUnion::result() {
-	vector<vector<int>*>* t;
-	t = new vector<vector<int>*>();
-	t->resize(size + 1);
-	for (int i = 1; i <= size; i++) {
-		(*t)[i] = new vector<int>();
-	}
+vector<vector<int> > FindUnion::result() {
+	vector<vector<int> > classesOfAbstraction;
+	classesOfAbstraction.resize(size + 1);
 
 	for (int i = 1; i <= size; i++) {
-		t->at(Find(i))->push_back(i);
+		classesOfAbstraction[Find(i)].push_back(i);
 	}
 	
-	vector<vector<int>*>* finalTab;
-	finalTab = new vector<vector<int>*>();
-	for (int i = 1; i < t->size(); i++) {
-		if ((*t)[i]->size() > 0) {
-			finalTab->push_back(t->at(i));
-		}
-		else {
-			delete (*t)[i];
+	vector<vector<int> > finalTab;
+	for (size_t i = 1; i < classesOfAbstraction.size(); i++) {
+		if (classesOfAbstraction[i].size() > 0) {
+			finalTab.push_back(classesOfAbstraction[i]);
 		}
 	}
-	delete t;
-	resultTab = finalTab;
+
 	return finalTab;
 }
 
 FindUnion::~FindUnion() {
-	for (int i = 0; i < resultTab->size(); i++) {
-		delete resultTab->at(i);
-	}
-	delete resultTab;
 }

@@ -1,17 +1,19 @@
-#pragma once
-using namespace std;
+#ifndef FIND_UNION_H
+#define FIND_UNION_H
+
 #include <vector>
 
 class FindUnion {
 	int size;
-	int *parent;
-	int *rank;
-	vector<vector<int>*>* resultTab;
+	std::vector<int> parent;
+	std::vector<int> rank;
 public:
 	FindUnion(int n);
 	int Find(int x);
 	void Union(int x, int y);
-	vector<vector<int>*>* result();
+    std::vector<std::vector<int> > result();
 	~FindUnion();
 };
 
+// your code
+#endif
