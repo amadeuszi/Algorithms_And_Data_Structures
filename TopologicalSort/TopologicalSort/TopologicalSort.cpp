@@ -1,23 +1,20 @@
-// TopologicalSort.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
 #include <vector>
 #include <iostream>
 using namespace std;
 
-vector<vector<int>> graph;
+vector<vector<int> > graph;
 vector<int> edgesIn;
 vector<int> result;
 vector<int> stack;
 
 int main()
 {
-	int n, m, a, b;
+    size_t n, m;
+	int a, b;
 	cin >> n >> m;
 	graph.resize(n);
 	edgesIn.resize(n);
-	for (int i = 0; i < m; i++) {
+	for (size_t i = 0; i < m; i++) {
 		cin >> a >> b;
 		a--;
 		b--;
@@ -25,12 +22,14 @@ int main()
 	}
 
 	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < graph[i].size(); j++) {
+		for (size_t j = 0; j < graph[i].size(); j++) {
 			edgesIn[graph[i][j]]++;
 		}
 	}
-	
-	for (int i = 0; i < edgesIn.size(); i++) {
+
+    //We find vertices that have zero edges that go into them
+    //That vertices can be first in our sort
+	for (size_t i = 0; i < edgesIn.size(); i++) {
 		if (edgesIn[i] == 0) {
 			stack.push_back(i);
 		}
@@ -40,29 +39,22 @@ int main()
 		int zeroIn = stack.at(stack.size() - 1);
 		stack.pop_back();
 		result.push_back(zeroIn);
-		for (int i = 0; i < graph[zeroIn].size(); i++) {
+		for (size_t i = 0; i < graph[zeroIn].size(); i++) {
 			if (--edgesIn[graph[zeroIn][i]] == 0) {
 				stack.push_back(graph[zeroIn][i]);
 			}
 		}
 	}
 
-	bool isOk = true;
-	for (int i = 0; i < edgesIn.size(); i++) {
-		if (edgesIn[i] > 0) {
-			isOk = false;
-			break;
-		}
-	}
-	
-	if (isOk) {
-		for (int i = 0; i < result.size(); i++) {
+    //checking whether all vertices were added
+	if (result.size() == n) {
+		for (size_t i = 0; i < result.size(); i++) {
 			cout << ++result[i] << " ";
 		}
 		cout << endl;
 	}
 	else {
-		cout << "Graf isn't acyclical" << endl;
+		cout << "Graph has cycles" << endl;
 	}
 
     return 0;

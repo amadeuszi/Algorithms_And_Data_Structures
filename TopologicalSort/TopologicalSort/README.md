@@ -1,0 +1,3 @@
+#Topological Sort
+Topological sort. I search for the vertices that have zero edges that go into them, then these vertices can be "first",  
+I detach these vertices from the graph and look for new  vertices that have zero edges in. And so on...
