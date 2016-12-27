@@ -1,7 +1,3 @@
-// TopologicalSortRecursive.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -14,7 +10,7 @@ enum colors {
 };
 
 
-vector<vector<int>> graph;
+vector<vector<int> > graph;
 vector<int> result;
 vector<colors> verticesColors;
 bool isOk = true;
@@ -32,7 +28,7 @@ void dfs(int v) {
 	//verticesColors[v] == NOT_VISITED
 
 	verticesColors[v] = VISITING;
-	for (int i = 0; i < graph[v].size(); i++) {
+	for (size_t i = 0; i < graph[v].size(); i++) {
 		dfs(graph[v][i]);
 	}
 	result.push_back(v);
@@ -42,26 +38,26 @@ void dfs(int v) {
 
 int main()
 {
-	int n, m, x, y;
+	size_t n, m, x, y;
 	cin >> n >> m;
 	graph.resize(n);
 	verticesColors.resize(n);
-	for (int i = 0; i < m; i++) {
+	for (size_t i = 0; i < m; i++) {
 		cin >> x >> y;
 		x--;
 		y--;
 		graph[x].push_back(y);
 	}
-	for (int i = 0; i < n; i++) {
+	for (size_t i = 0; i < n; i++) {
 		verticesColors[i] = NOT_VISITED;
 	}
-	for (int i = 0; i < n; i++) {
+	for (size_t i = 0; i < n; i++) {
 		dfs(i);
 	}
 	
 	if (isOk) {
 		reverse(result.begin(), result.end());
-		for (int i = 0; i < result.size(); i++) {
+		for (size_t i = 0; i < result.size(); i++) {
 			cout << ++result[i] << " ";
 		}
 	}
