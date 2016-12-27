@@ -1,10 +1,6 @@
-// grz.cpp : Defines the entry point for the console application.
-//
-
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include "stdafx.h"
 
 using namespace std;
 

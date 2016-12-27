@@ -1,5 +1,7 @@
 #Biura
 
+Link: http://main.edu.pl/pl/archive/oi/14/biu
+
 **It is my old code so it isn't the best quality.**
 
 ######Limit pamięci: 64 MB
