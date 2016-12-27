@@ -1,6 +1,6 @@
 #Biura
 
-*It is my old code so it isn't the best quality.*
+**It is my old code so it isn't the best quality.**
 
 ######Limit pamięci: 64 MB
 
