@@ -2,8 +2,6 @@
 
 Link: http://main.edu.pl/pl/archive/oi/14/biu
 
-**It is my old code so it isn't the best quality.**
-
 ######Limit pamięci: 64 MB
 
 Firma Bajtel jest potentatem na bajtockim rynku telefonów komórkowych. Każdy jej pracownik otrzymał służbowy telefon, w którym ma zapisane numery telefonów niektórych swoich współpracowników (a wszyscy ci współpracownicy mają w swoich telefonach zapisany jego numer). W związku z dynamicznym rozwojem firmy zarząd postanowił przenieść siedzibę firmy do nowych biurowców. W celu polepszenia efektywności pracy zostało postanowione, że każda para pracowników, którzy będą pracować w różnych budynkach, powinna znać (nawzajem) swoje numery telefonów, tzn. powinni oni mieć już zapisane nawzajem swoje numery w służbowych telefonach komórkowych. Równocześnie, zarząd postanowił zająć jak największą liczbę biurowców, aby zapewnić pracownikom komfort pracy. Pomóż zarządowi firmy Bajtel zaplanować liczbę biur i ich wielkości tak, aby spełnić oba te wymagania.
