@@ -1,7 +1,3 @@
-// XIV_Biura_2.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -38,6 +34,7 @@ int Find(int x) {
 	} 
 	else {
 		parent[x] = Find(parent[x]);
+		return parent[x];
 	}
 }
 
@@ -88,15 +85,12 @@ int main()
 	}
 
 	for (int i = 1; i <= n; i++) {
-		if (i == 4) {
-			int gggg = 42;
-		}
 		vector<int>* ai = new vector<int>(representants.size());
-		for (int j = 0; j < representants.size(); j++) {
+		for (size_t j = 0; j < representants.size(); j++) {
 			(*ai)[j] = 0;
 		}
 		
-		for (int j = 0; j < graph[i].size(); j++) {
+		for (size_t j = 0; j < graph[i].size(); j++) {
 			int repr = Find(graph[i][j]);
 			int whatIsCurrentAbstraction = Find(i);
 			if (repr == whatIsCurrentAbstraction) {
@@ -106,20 +100,17 @@ int main()
 		}
 		
 		vector<int>* many = new vector<int>(representants.size());
-		for (int j = 0; j < representants.size(); j++) {
+		for (size_t j = 0; j < representants.size(); j++) {
 			(*many)[j] = howMany[representants[j]];
 		}
 		
 		vector<int>* representants2 = new vector<int>(representants.size());
-		for (int j = 0; j < representants.size(); j++) {
+		for (size_t j = 0; j < representants.size(); j++) {
 			(*representants2)[j] = representants[j];
 		}
 
-		for (int j = 0; j < representants.size(); j++) {
+		for (size_t j = 0; j < representants.size(); j++) {
 			if ((*ai)[j] < (*many)[j]) {
-				if (i == 4 || (*representants2)[j] == 4) {
-					int gg = 42;
-				}
 				Union(i, (*representants2)[j]);
 			}
 		}
@@ -150,7 +141,7 @@ int main()
 
 	sort(representants.begin(), representants.end());
 
-	for (int i = 0; i < representants.size(); i++) {
+	for (size_t i = 0; i < representants.size(); i++) {
 		cout << representants[i];
 		if (i != representants.size() - 1) {
 			cout << " ";
